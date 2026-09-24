@@ -9,8 +9,8 @@
     "node": "24.x"
   },
   "scripts": {
-    "dev": "pnpm db:migrate && vite --host 127.0.0.1",
-    "build": "vite build",
+    "dev": "pnpm brand:generate && pnpm db:migrate && vite --host 127.0.0.1",
+    "build": "pnpm brand:generate && vite build",
     "check": "tsc --noEmit",
     "test": "pnpm test:unit && pnpm test:e2e",
     "test:unit": "vitest run",
@@ -22,7 +22,8 @@
     "db:seed": "wrangler d1 execute DB --local --file db/seed.sql",
     "db:setup": "pnpm db:migrate && pnpm db:seed",
     "db:migrate:remote": "node scripts/check-deploy.mjs && wrangler d1 migrations apply DB --remote",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "brand:generate": "node scripts/brand-assets.mjs"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.58.0",

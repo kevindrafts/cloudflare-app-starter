@@ -13,8 +13,14 @@ import {
 } from "./ui/dialog";
 const statuses = {
   planned: { label: "Planned", style: "bg-muted text-muted-foreground" },
-  active: { label: "In progress", style: "bg-[#e5eedc] text-[#355c28]" },
-  done: { label: "Completed", style: "bg-[#e5eee9] text-[#245d49]" },
+  active: {
+    label: "In progress",
+    style: "bg-status-active text-status-active-foreground",
+  },
+  done: {
+    label: "Completed",
+    style: "bg-status-done text-status-done-foreground",
+  },
 };
 export function ProjectCard({ project }: { project: Project }) {
   const [editing, setEditing] = useState(false);

@@ -118,7 +118,7 @@ export function Shell() {
           <span className="hidden sm:block">Make something useful.</span>
         </header>
         <div className="px-5 md:px-10 pt-5">
-          <div className="flex gap-2 text-xs leading-relaxed rounded-lg border border-[#e7cbb8] bg-[#fff5e8] text-[#754321] px-3 py-2.5">
+          <div className="flex gap-2 text-xs leading-relaxed rounded-lg border border-notice-border bg-notice text-notice-foreground px-3 py-2.5">
             <Info className="size-4 shrink-0 mt-0.5" />
             <p>
               <strong>Public demo.</strong> Anyone with access can view, edit,

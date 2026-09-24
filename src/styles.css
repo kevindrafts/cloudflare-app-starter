@@ -11,9 +11,20 @@
   --color-border: var(--border);
   --color-input: var(--border);
   --color-ring: var(--primary);
-  --color-destructive: #b3362d;
-  --color-accent: #f0a689;
-  --color-accent-foreground: #183b36;
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-overlay: var(--overlay);
+  --color-notice: var(--notice);
+  --color-notice-foreground: var(--notice-foreground);
+  --color-notice-border: var(--notice-border);
+  --color-status-active: var(--status-active);
+  --color-status-active-foreground: var(--status-active-foreground);
+  --color-status-done: var(--status-done);
+  --color-status-done-foreground: var(--status-done-foreground);
+  --color-art-light: var(--art-light);
+  --color-art-muted: var(--art-muted);
   --color-secondary: var(--muted);
   --color-secondary-foreground: var(--foreground);
   --font-sans: "Arial", "Helvetica Neue", sans-serif;
@@ -28,6 +39,22 @@
   --muted: #edf0e9;
   --muted-foreground: #57665f;
   --border: #dce2d8;
+  /* Shared accents, feedback, and artwork. Override in :root.dark as needed. */
+  --accent: #f0a689;
+  --accent-foreground: #183b36;
+  --destructive: #b3362d;
+  --destructive-foreground: #ffffff;
+  --overlay: #000000;
+  --notice: #fff5e8;
+  --notice-foreground: #754321;
+  --notice-border: #e7cbb8;
+  --status-active: #e5eedc;
+  --status-active-foreground: #355c28;
+  --status-done: #e5eee9;
+  --status-done-foreground: #245d49;
+  --art-light: #dce6cc;
+  --art-muted: #72917c;
+  --brand-foreground: #f6f5ef;
 }
 :root.dark {
   color-scheme: dark;
@@ -40,9 +67,11 @@
   --muted-foreground: #b0c0b4;
   --border: #395046;
 }
-* {
-  box-sizing: border-box;
-  border-color: var(--border);
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
 }
 body {
   margin: 0;

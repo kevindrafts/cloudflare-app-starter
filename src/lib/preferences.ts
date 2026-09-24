@@ -16,6 +16,12 @@ export function readPreferences(): Preferences {
 export function applyPreferences(value: Preferences) {
   document.documentElement.classList.toggle("dark", value.theme === "dark");
   document.documentElement.dataset.density = value.density;
+  const color = getComputedStyle(document.documentElement)
+    .getPropertyValue("--primary")
+    .trim();
+  document
+    .querySelector('meta[name="theme-color"]')
+    ?.setAttribute("content", color);
 }
 export function savePreferences(value: Preferences) {
   localStorage.setItem("forma-preferences", JSON.stringify(value));

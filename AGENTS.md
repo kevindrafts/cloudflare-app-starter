@@ -1,0 +1,10 @@
+# Agent guide
+
+- Read `README.md` for architecture, API contracts, and deployment. Keep this a React SPA with an explicit Hono API; no TanStack Start, Next.js, or coupling to the marketing repo.
+- Use Node from `.nvmrc` and pnpm from `package.json` (`npm install -g pnpm@10.34.5` if needed). Run `pnpm install --frozen-lockfile`, `pnpm db:setup`, then `pnpm dev` at `http://localhost:5173`. Local work needs no Cloudflare login or secrets; D1 is emulated in `.wrangler/state`.
+- Routes: `src/main.tsx`. UI: `src/pages/` and `src/components/`; editable shadcn components: `src/components/ui/`. API: `worker/index.ts`. Shared Zod contracts: `shared/contracts.ts`. Schema: `worker/db/schema.ts`; generated migrations: `drizzle/`.
+- Colors live in `src/styles.css`: `:root` defaults, `:root.dark` overrides, `@theme inline` Tailwind mappings. Use named tokens for UI, status, notice, and artwork colors. `scripts/assets/favicon.svg` is the source template; `pnpm brand:generate` runs before dev/build. Rerun it after palette edits; asset-referenced tokens must be literal hex colors. Commit regenerated assets.
+- The CRUD API is intentionally public. Never imply the demo provides private storage. Real user data requires server-side sessions and ownership checks on every operation. Keep `/api` and `/api/*` routed to the Worker before SPA fallback.
+- For schema changes, run `pnpm db:generate`, review/commit SQL and metadata, then `pnpm db:migrate` locally. Remote provisioning, `pnpm db:migrate:remote`, and `pnpm deploy` are explicit deployment steps; run them only when the task calls for them.
+- Before finishing, run `pnpm check` and `pnpm test`. First install Chromium with `pnpm exec playwright install chromium` (Linux: add `--with-deps`). Stop any server on port 5173 so tests build and launch production preview. Tests use local D1 and preserve seed fixtures. Format changed files with Prettier; inspect affected desktop/mobile and light/dark UI.
+- Keep dependencies and lockfile in sync. Never commit secrets, `.env`, `.dev.vars`, `dist/`, or `.wrangler/`. Keep optional integrations out of the core unless requested.

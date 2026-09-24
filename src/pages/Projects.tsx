@@ -63,7 +63,7 @@ export function Projects({ overview = false }: { overview?: boolean }) {
               </p>
               <Button
                 onClick={() => setCreating(true)}
-                className="mt-6 !bg-[#f0a689] !text-[#183b36]"
+                className="mt-6 !bg-accent !text-accent-foreground"
               >
                 Make your first move <ArrowUpRight />
               </Button>
@@ -72,10 +72,10 @@ export function Projects({ overview = false }: { overview?: boolean }) {
               aria-hidden="true"
               className="hidden lg:grid grid-cols-2 w-44 h-44 shrink-0 rotate-[-12deg]"
             >
-              <div className="rounded-full bg-[#f0a689]" />
-              <div className="rounded-tr-full bg-[#dce6cc]" />
-              <div className="rounded-bl-full bg-[#72917c]" />
-              <div className="rounded-full border-[22px] border-[#f0a689]" />
+              <div className="rounded-full bg-accent" />
+              <div className="rounded-tr-full bg-art-light" />
+              <div className="rounded-bl-full bg-art-muted" />
+              <div className="rounded-full border-[22px] border-accent" />
             </div>
           </section>
           <section

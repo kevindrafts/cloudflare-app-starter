@@ -138,7 +138,9 @@ Keep remote migrations an explicit release step. If you later automate them, use
 
 ## Customize
 
-- Change shared visual tokens in `src/styles.css`; replace Forma branding in `Shell.tsx`, page copy, and `index.html`.
+- Change colors in `src/styles.css`: `:root` defines the default palette, `:root.dark` overrides it, and `@theme inline` exposes Tailwind utilities. Core UI, hero artwork, status badges, the demo notice, and dialog overlays all use named tokens. Shared accents inherit the base palette in dark mode unless overridden. The browser theme color follows the current `--primary`.
+- Use semantic classes such as `bg-accent`, `text-status-active-foreground`, and `border-notice-border`; avoid color literals in components. Add new tokens in the palette and Tailwind mapping when needed.
+- Replace Forma branding in `Shell.tsx`, page copy, and `index.html`. The favicon template is `scripts/assets/favicon.svg`; `pnpm brand:generate` renders it from the base palette before dev/build. Rerun that command after editing colors during a dev session, keep asset-referenced tokens as literal hex colors, and commit the generated favicon.
 - Add UI components using `pnpm dlx shadcn@latest add <component>`; `components.json` and the `@/` alias are ready. Existing small components are owned and editable in your repo.
 - Add client routes explicitly in `src/main.tsx`. No full-stack router framework is involved.
 - Add server routes in `worker/index.ts`, and shared validation in `shared/contracts.ts`.
